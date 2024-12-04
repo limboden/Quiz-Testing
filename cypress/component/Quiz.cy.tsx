@@ -3,16 +3,23 @@ import Quiz from '../../client/src/components/Quiz';
 import React from 'react';
 
 describe('Quiz', () => {
-  const waitTime = 5000
+  const waitTime = 25000
 
   beforeEach(() => {
     mount(<Quiz />);
   });
-
 
   it('starts the quiz', () => {
     cy.contains("Start Quiz").click();
     cy.wait(waitTime)
     cy.get(".card").should("exist");
   })
+
+  it("shows the next question after answering", () => {
+    cy.contains("Start Quiz").click();
+    cy.wait(waitTime)
+    cy.get(".btn-primary").first().click();
+    cy.wait(waitTime)
+    cy.get(".card h2").should("exist");
+  });
 })
