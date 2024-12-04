@@ -22,4 +22,14 @@ describe('Quiz', () => {
     cy.wait(waitTime)
     cy.get(".card h2").should("exist");
   });
+
+  it("ends the quiz after all questions are answered", () => {
+    cy.contains("Start Quiz").click();
+    cy.wait(waitTime)
+    for (let i = 0; i < 10; i++) {
+      cy.get(".btn-primary").contains("1").click();
+      cy.wait(waitTime)
+    }
+    cy.contains("Quiz Completed").should("be.visible");
+  });
 })
