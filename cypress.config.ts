@@ -12,6 +12,7 @@ export default defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
     },
-    supportFile: false
+    supportFile: false,
+    slowTestThreshold: 60000
   },
 });
