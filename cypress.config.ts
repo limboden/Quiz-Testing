@@ -6,10 +6,12 @@ export default defineConfig({
       framework: "react",
       bundler: "vite",
     },
+    slowTestThreshold: 60000
   },
 
   e2e: {
     setupNodeEvents(on, config) {
     },
+    supportFile: false
   },
 });
